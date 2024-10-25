@@ -6,12 +6,15 @@
 #######################################################################################
 # 1. Import libraries for API requests, JSON formatting, time, os, (restconf_final or netconf_final), netmiko_final, and ansible_final.
 
-<!!!REPLACEME with code for libraries>
+import requests
+import time
+import netconf_final as netconf
+import os
 
 #######################################################################################
 # 2. Assign the Webex access token to the variable ACCESS_TOKEN using environment variables.
 
-ACCESS_TOKEN = os.environ."<!!!REPLACEME with os.environ method and environment variable!!!>"
+ACCESS_TOKEN = os.environ.get("ACCESS_TOKEN")
 
 #######################################################################################
 # 3. Prepare parameters get the latest message for messages API.
