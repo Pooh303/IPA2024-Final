@@ -1,0 +1,9 @@
+#192.168.20.157
+#CSR1kv ansible_user=admin ansible_password=cisco ansible_network_os=ios ansible_connection=network_cli ansible_host=192.168.20.158
+
+CSR1kv ansible_user=admin ansible_password=cisco ansible_host=10.0.15.183
+
+#172.31.128.10
+#172.31.128.11
+#172.31.128.12
+#172.31.128.15 ansible_user=centos

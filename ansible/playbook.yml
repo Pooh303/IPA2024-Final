@@ -1,0 +1,19 @@
+---
+- name: Gather running configuration from network devices
+  hosts: CSR1kv
+  gather_facts: no
+  tasks:
+    - name: Gather running configuration
+      ios_config:
+        authorize: yes
+        config: show running-config
+      register: output
+
+    - name: Save output to file
+      copy:
+        content: "{{ output.stdout }}"
+        dest: "./show_run_65070182_CSR1KV-Pod1-3.txt"
+
+    - name: Display the output
+      debug:
+        var: output.stdout

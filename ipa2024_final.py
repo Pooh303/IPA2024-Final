@@ -12,6 +12,8 @@ import netconf_final as netconf
 import os
 import json
 from requests_toolbelt.multipart.encoder import MultipartEncoder
+import netmiko_final as miko
+import ansible_final as ans
 
 #######################################################################################
 # 2. Assign the Webex access token to the variable ACCESS_TOKEN using environment variables.
@@ -96,9 +98,9 @@ while True:
         elif command == "status":
             responseMessage = netconf.status(name)
         elif command == "gigabit_status":
-            responseMessage = netconf.giga_stat(name)
+            responseMessage = miko.gigabit_status()
         elif command == "showrun":
-            responseMessage = netconf.shrun(name)
+            responseMessage = ans.showrun()
         else:
             responseMessage = "Error: No command or unknown command"
         

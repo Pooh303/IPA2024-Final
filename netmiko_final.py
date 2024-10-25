@@ -1,34 +1,37 @@
 from netmiko import ConnectHandler
 from pprint import pprint
 
-device_ip = "<!!!REPLACEME with router IP address!!!>"
+device_ip = "10.0.15.183"
 username = "admin"
 password = "cisco"
 
 device_params = {
-    "device_type": "<!!!REPLACEME with device type for netmiko!!!>",
+    "device_type": "cisco_ios",
     "ip": device_ip,
     "username": username,
     "password": password,
 }
 
-
 def gigabit_status():
-    ans = ""
     with ConnectHandler(**device_params) as ssh:
         up = 0
         down = 0
         admin_down = 0
-        result = ssh.send_command("<!!!REPLACEME with proper command!!!>", use_textfsm=True)
-        for status in result:
-            if <!!!Write code here!!!>:
-                <!!!Write code here!!!>
-                if <!!!Write code here!!!> == "up":
+        interface_statuses = []
+        result = ssh.send_command("show ip interface brief", use_textfsm=True)
+        for interface in result:
+            if "Gi" in interface['interface']:
+                status = interface['status']
+                interface_statuses.append(f"{interface['interface']} {status}")
+                if status == "up":
                     up += 1
-                elif <!!!Write code here!!!> == "down":
+                elif status == "down":
                     down += 1
-                elif <!!!Write code here!!!> == "administratively down":
+                elif status == "administratively down":
                     admin_down += 1
-        ans = <!!!Write code here!!!>
+
+        status_string = ", ".join(interface_statuses)
+        summary = f"-> {up} up, {down} down, {admin_down} administratively down"
+        ans = f"{status_string} {summary}"
         pprint(ans)
         return ans
