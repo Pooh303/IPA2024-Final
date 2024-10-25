@@ -12,8 +12,4 @@
     - name: Save output to file
       copy:
         content: "{{ output.stdout }}"
-        dest: "./show_run_65070182_CSR1KV-Pod1-3.txt"
-
-    - name: Display the output
-      debug:
-        var: output.stdout
+        dest: "./show_run_65070182_CSR1KV-Pod1-3.txt"  # Make sure this matches the filename in ansible_final.py

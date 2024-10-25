@@ -28,7 +28,7 @@ ACCESS_TOKEN = "Bearer " + ACCESS_TOKEN
 
 # Defines a variable that will hold the roomId
 roomIdToGetMessages = (
-    "Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vODgyNDM5NTAtNTI2My0xMWVmLWJjYTctYTE3MGI0ODFlZGZh"
+    "Y2lzY29zcGFyazovL3VzL1JPT00vNTFmNTJiMjAtNWQwYi0xMWVmLWE5YTAtNzlkNTQ0ZjRkNGZi"
 )
 
 while True:
@@ -119,7 +119,7 @@ while True:
         # https://developer.webex.com/docs/basics for more detail
 
         if command == "showrun" and responseMessage == 'ok':
-            filename = "show_run_config.txt"
+            filename = f"show_run_65070182_CSR1KV-Pod1-3.txt"
             with open(filename, "rb") as fileobject:
                 filetype = "text/plain"
                 postData = {
