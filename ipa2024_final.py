@@ -81,19 +81,19 @@ while True:
 # 5. Complete the logic for each command
 
         if command == "create":
-            <!!!REPLACEME with code for create command!!!>     
+            responseMessage = netconf.create(name)     
         elif command == "delete":
-            <!!!REPLACEME with code for delete command!!!>
+            responseMessage = netconf.delete(name)
         elif command == "enable":
-            <!!!REPLACEME with code for enable command!!!>
+            responseMessage = netconf.enable(name)
         elif command == "disable":
-            <!!!REPLACEME with code for disable command!!!>
+            responseMessage = netconf.disable(name)
         elif command == "status":
-            <!!!REPLACEME with code for status command!!!>
-         elif command == "gigabit_status":
-            <!!!REPLACEME with code for gigabit_status command!!!>
+            responseMessage = netconf.status(name)
+        elif command == "gigabit_status":
+            responseMessage = netconf.giga_stat(name)
         elif command == "showrun":
-            <!!!REPLACEME with code for showrun command!!!>
+            responseMessage = netconf.shrun(name)
         else:
             responseMessage = "Error: No command or unknown command"
         
