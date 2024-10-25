@@ -42,9 +42,9 @@ while True:
     # - Use the GetParameters to get only the latest message.
     # - Store the message in the "r" variable.
     r = requests.get(
-        "<!!!REPLACEME with URL of Webex Teams Messages API!!!>",
-        params=<!!!REPLACEME with HTTP parameters!!!>,
-        headers=<!!!REPLACEME with HTTP headers!!!>,
+        "https://webexapis.com/v1/messages",
+        params=getParameters,
+        headers=getHTTPHeader,
     )
     # verify if the retuned HTTP status code is 200/OK
     if not r.status_code == 200:
@@ -68,10 +68,14 @@ while True:
 
     # check if the text of the message starts with the magic character "/" followed by your studentID and a space and followed by a command name
     #  e.g.  "/66070123 create"
-    if message.startswith("<!!!REPLACEME!!!>"):
+    if message.startswith("/65070182"):
 
         # extract the command
-        command = <!!!REPLACEME!!!>
+        name = message.split()[0][1:]
+        if message == f"/{name}":
+            responseMessage = "Error: No command or unknown command"
+        else:
+            command = message.split(' ', 1)[1]
         print(command)
 
 # 5. Complete the logic for each command
